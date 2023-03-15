@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication1.Models.ostava>
+
+    @{ ViewBag.Title = "Ostava"; }
+
+    <h2>TabelaPeciva</h2>
+
+    <p>
+        @Html.ActionLink("Unesite novu stvar u ostavu", "Unesi")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kolicina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rok_trajanja)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kolicina)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rok_trajanja)
+                </td>
+                <td>
+                    @Html.ActionLink("Izmeni", "Izmeni", new { id = item.Id }) |
+                    @Html.ActionLink("Detalji", "Detalji", new { id = item.Id }) |
+                    @Html.ActionLink("Obrisi", "Obrisi", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
